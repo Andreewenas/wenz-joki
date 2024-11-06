@@ -1,0 +1,194 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+.logo-container {
+    display: flex;
+    overflow: hidden;
+  }
+
+  .logo {
+    display: flex;
+    gap: 3rem;
+    padding: 1rem;
+    flex-shrink: 0;
+    animation: infinite-scroll 10s linear infinite;
+  }
+
+/* Style untuk navbar yang di-scroll */
+.navbar-scrolled {
+  width: 40%;
+  margin: 0 auto;
+  border-radius: 25px;
+  padding: 4px 0;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  z-index: 1000;
+  transform: translateX(-50%);
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  visibility: visible;
+}
+
+/* Atur efek transisi untuk menyembunyikan navbar saat di-scroll */
+.navbar-hidden {
+  visibility: hidden;
+  transition: visibility 0.3s ease;
+}
+
+/* Style tambahan */
+.navbar-scrolled::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  border-radius: 25px;
+  padding: 3px;
+  background: linear-gradient(45deg, #30E3CA, #fff);
+  -webkit-mask: 
+      linear-gradient(#fff 0 0) content-box, 
+      linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+
+  /* Hilangkan jarak antara logo dan menu */
+  #logo {
+    margin-right: 0;
+  }
+
+  /* Hilangkan gap antara menu items */
+  #menu-items {
+    gap: 0;
+  }
+
+  @keyframes infinite-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
+
+  .demo-wrapper {
+  position: relative; /* Untuk menampung elemen absolute */
+  height: 105vh; /* Tinggi 100% dari viewport */
+  overflow: hidden; /* Menghindari overflow dari testimonial */
+}
+
+.row-1, .row-2 {
+  position: absolute; /* Menggunakan absolute untuk mengatur posisi */
+  width: 100%; /* Memastikan lebar penuh */
+}
+
+.row-1 {
+  top: 0; /* Baris pertama di atas */
+}
+
+.row-2 {
+  top: 100%; /* Baris kedua di bawah baris pertama */
+}
+
+.testimonial {
+  width: 400px; /* Atur lebar tetap */
+  height: 300px; /* Atur tinggi tetap atau tinggi maksimum */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Agar elemen di dalamnya terdistribusi merata */
+}
+
+.testimonial blockquote {
+  flex: 1; /* Membuat blockquote mengisi ruang yang tersedia */
+}
+
+.testimonial img {
+  width: 56px; /* Sesuaikan ukuran gambar */
+  height: 56px; /* Sesuaikan ukuran gambar */
+}
+
+.flip-card {
+  perspective: 1000px; /* Tambahkan perspektif untuk efek 3D */
+}
+
+.flip-card-inner {
+  transition: transform 0.7s;
+  transform-style: preserve-3d;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: inherit;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+  position: relative;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* CSS untuk tampilan mobile */
+@media (max-width: 768px) {
+  /* Pastikan setiap testimonial berada dalam satu kolom pada mobile */
+  .demo-gallery .wrapper {
+    display: block;
+    padding: 1rem; /* Tambahkan padding agar tidak menempel di sisi layar */
+  }
+
+   /* Sembunyikan semua testimonial di atas indeks ketiga */
+   .demo-gallery .flex .testimonial:nth-child(n+3) {
+    display: none;
+  }
+
+  /* Setiap baris testimonial diubah ke arah kolom */
+  .demo-gallery .flex {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Spasi antara setiap testimonial */
+    align-items: center; /* Pusatkan item */
+    justify: center;
+  }
+
+  /* Atur ukuran testimonial */
+  .demo-gallery .flex .testimonial {
+    margin: 0;
+    height: auto;
+    overflow: visibility;
+    width: 100%; /* Memastikan testimonial mengambil lebar penuh di mobile */
+    max-width: 400px; /* Batasi lebar maksimal untuk tampilan lebih baik */
+
+  }
+  
+  /* Mengatur padding dan font untuk konten dalam testimonial */
+  .demo-gallery .flex .testimonial blockquote {
+    padding: 1rem; /* Sesuaikan padding internal */
+    font-size: 0.9rem; /* Kurangi font size untuk teks yang lebih kecil di mobile */
+  }
+
+  .demo-gallery .flex .testimonial p {
+    font-size: 1rem; /* Ukuran teks untuk paragraf di mobile */
+    padding: 10px;
+  }
+}
+
+
+
+
+
