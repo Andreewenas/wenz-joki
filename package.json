@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "tailwindcss -i ./src/input.css -o ./src/output.css"
+    "build": "npx tailwindcss -i ./src/input.css -o ./src/output.css"
   },
   "keywords": [],
   "author": "",
@@ -16,11 +16,6 @@
   },
   "dependencies": {
     "tailwind-scrollbar-hide": "^1.1.7"
-  },
-
-  "engines": {
-  "node": ">=14.0.0",
-  "npm": ">=6.0.0"
-}
+  }
 
 }
