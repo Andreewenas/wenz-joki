@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "build": "tailwindcss -i ./src/input.css -o ./src/output.css"
+    "build": "tailwindcss -i ./src/input.css -o ./src/output.css",
+    "postinstall": "chmod +x ./node_modules/.bin/tailwindcss"
   },
   "keywords": [],
   "author": "",
